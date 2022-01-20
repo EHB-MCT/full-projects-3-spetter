@@ -9,6 +9,7 @@ module.exports = {
   entry: {
     index: './src/index.js',
     stories: './src/stories.js',
+    userstory: './src/userstory.js'
   }, 
   output: {
       path: path.resolve(__dirname, 'docs'),
