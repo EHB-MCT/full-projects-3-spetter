@@ -11,3 +11,13 @@
     font-display: swap;
 }
 
+
+@font-face {
+    font-family: 'neue_machinaultrabold';
+    src: url('neuemachina-ultrabold-webfont.woff2') format('woff2'),
+         url('neuemachina-ultrabold-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
