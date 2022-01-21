@@ -521,6 +521,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   margin-left: 6rem;
 }
 
+.ml-5 {
+  margin-left: 1.25rem;
+}
+
 .box-border {
   box-sizing: border-box;
 }
