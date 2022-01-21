@@ -1,14 +1,12 @@
 const path = require('path');
 
 module.exports = {
-  // entry: './src/index.js',
-  // output: {
-  //   filename: 'main.js',
-  //   path: path.resolve(__dirname, 'docs'),
-  // },
   entry: {
     index: './src/index.js',
     stories: './src/stories.js',
+    userstory: './src/userstory.js',
+    story: './src/story.js',
+    story2: './src/story2.js'
   }, 
   output: {
       path: path.resolve(__dirname, 'docs'),
