@@ -6,26 +6,28 @@
  * or disable the default devtool with "devtool: false".
  * If you are looking for production-ready output files, see mode: "production" (https://webpack.js.org/configuration/mode/).
  */
-/** *** */ (() => { // webpackBootstrap
-/** *** */
+/******/ (() => { // webpackBootstrap
+/******/ 	"use strict";
+/******/ 	var __webpack_modules__ = ({
 
-  /** *** */ 	const __webpack_modules__ = ({
-
-    /***/ './src/stories.js':
-    /*! ************************!*\
+/***/ "./src/stories.js":
+/*!************************!*\
   !*** ./src/stories.js ***!
-  \*********************** */
-    /***/ (() => {
-      eval("\r\n\r\nwindow.onload = function() {\r\n    console.log('stories js') \r\n};\n\n//# sourceURL=webpack://izran-project/./src/stories.js?");
-      /***/ }),
+  \************************/
+/***/ (() => {
 
-    /** *** */ 	});
-  /** ********************************************************************* */
-  /** *** */
-  /** *** */ 	// startup
-  /** *** */ 	// Load entry module and return exports
-  /** *** */ 	// This entry module can't be inlined because the eval devtool is used.
-  /** *** */ 	const __webpack_exports__ = {};
-  /** *** */ 	__webpack_modules__['./src/stories.js']();
-/** *** */
-/** *** */ })();
+eval("\nconsole.log('connected!');\n\nwindow.onload = () => {\n  async function runTest(){\n    const resp = await fetch('http://localhost:4000/api/stories-content');\n    const data = await resp.json();\n\n    document.getElementById('content').innerText = JSON.stringify(data);\n    console.log(data);\n  }\n\n  runTest();\n}\n\n\n\n\n\n\n\n\n//# sourceURL=webpack://izran-project/./src/stories.js?");
+
+/***/ })
+
+/******/ 	});
+/************************************************************************/
+/******/ 	
+/******/ 	// startup
+/******/ 	// Load entry module and return exports
+/******/ 	// This entry module can't be inlined because the eval devtool is used.
+/******/ 	var __webpack_exports__ = {};
+/******/ 	__webpack_modules__["./src/stories.js"]();
+/******/ 	
+/******/ })()
+;

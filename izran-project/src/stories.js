@@ -1,13 +1,20 @@
-const express = require('express');
+"use strict"
+console.log('connected!');
 
-const app = express();
+window.onload = () => {
+  async function runTest(){
+    const resp = await fetch('http://localhost:4000/api/stories-content');
+    const data = await resp.json();
 
-const port = process.env.PORT || 3000;
+    document.getElementById('content').innerText = JSON.stringify(data);
+    console.log(data);
+  }
 
-app.get('/', (req, res) => {
-  res.send('Welcome to my API!');
-});
+  runTest();
+}
 
-app.listen(port, () => {
-  console.log(`Logging on port: ${port}`);
-});
+
+
+
+
+
