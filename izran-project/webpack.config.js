@@ -7,6 +7,7 @@ module.exports = {
     userstory: './src/userstory.js',
     story: './src/story.js',
     story2: './src/story2.js',
+    map: './src/map.js',
   },
   output: {
     path: path.resolve(__dirname, 'docs'),
