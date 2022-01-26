@@ -27,11 +27,27 @@
                 <h1>of neem het op!</h1>
             </div>
             <div id="icons">
-
-                
                 <svg xmlns="http://www.w3.org/2000/svg" width="28" height="36" viewBox="0 0 28 36">
                     <path id="Path_57" data-name="Path 57" d="M11,7A6,6,0,1,1,23,7v8a6,6,0,0,1-12,0Zm8,21.86A14,14,0,0,0,31,15a2,2,0,0,0-4,0A10,10,0,1,1,7,15a2,2,0,1,0-4,0A14,14,0,0,0,15,28.86L15,33H9a2,2,0,0,0,0,4H25a2,2,0,0,0,0-4H19Z" transform="translate(-3 -1)" fill-rule="evenodd"/>
                 </svg>   
+
+                <!-- AUDIO RECORDER -->
+                <input type="file" accept="audio/*" capture id="recorder">
+                <audio id="player" controls></audio>
+                <script>
+                  const recorder = document.getElementById('recorder');
+                  const player = document.getElementById('player');
+                
+                  recorder.addEventListener('change', function(e) {
+                    const file = e.target.files[0];
+                    const url = URL.createObjectURL(file);
+                    // Do something with the audio file.
+                    player.src = url;
+                  });
+                </script>  
+                
+                
+                
             </div>
             <form action="">
                 <label id="label" for="fname">Titel verhaal</label><br>
