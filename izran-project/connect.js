@@ -30,7 +30,7 @@ storyRouter.route('/stories-content')
       if(error){
         return res.status(500).send(error)
       }
-      res.json(result)
+      res.json(result);
     }) 
   });
 
@@ -44,7 +44,7 @@ postRouter.route('/stories-userpost')
     collection.insertOne(req.body).then(result => {
       console.log(result);
     });
-    res.json(req.body)
+    res.json(req.body);
   });
 
 app.use('/api', postRouter);
