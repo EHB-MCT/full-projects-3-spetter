@@ -8,10 +8,14 @@ const storyRouter = Router();
 const port = process.env.PORT || 3000;
 
 // MongoDb
-const { MongoClient } = require('mongodb');
+const { MongoClient, ObjectId } = require('mongodb');
 const url = 'mongodb+srv://izran-admin:G009leG0dG090l@cluster0.bih5e.mongodb.net/izran-database?retryWrites=true&w=majority';
 const dbName = 'izran-database';
 const client = new MongoClient(url);
+
+//Mongojs
+const mongojs = require('mongojs');
+
 
 // Middleware
 const bodyParser = require('body-parser');
@@ -33,11 +37,30 @@ storyRouter.route('/stories-content')
     })
   });
 
+  storyRouter.route('/stories-content/:id')
+  .get((req, res) => {
+    collection = db.collection("stories-content");
+    collection.find({_id:mongojs.ObjectID(req.params.id)}).toArray((error, result) => {
+      if(error){
+        return res.status(500).send(error)
+      }
+      res.json(result)
+    })
+  });
+
+
+
+
+
+  
+
 app.use('/api', storyRouter);
 
 app.get('/', (req, res) => {
   res.send('Welcome to my Nodemon API!');
 });
+
+
 
 app.listen(port, () => {
   console.log(`Logging on port: ${port}`);
