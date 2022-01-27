@@ -1,0 +1,60 @@
+body{
+    margin: 0;
+}
+
+header{
+    background-color: #F9F7ED;
+    width: 100%;
+    height: 15vh;
+    display: flex;
+    justify-content: space-between;
+}
+
+#logo{
+    width: 15vw;
+    height: 10vh;
+    padding-top: 2.3vh;
+    margin-left: 6vw;
+}
+#book-share{
+    margin-top: 3vh;
+    width: 35%;
+    display: flex;
+    flex-flow: row;
+}
+header svg{
+    width: 7vw;
+    height: 7vh;
+    margin-right: 5vw;
+}
+header svg:hover{
+    width: 7vw;
+    height: 7vh;
+    margin-right: 5vw;
+    fill: #e6332A;
+}
+
+
+
+p {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+h3 {
+    font-family: 'neue_machinaultrabold';
+}
+
+h1{
+    font-family: 'neue_machinaultrabold';
+}
+
+#data{
+    margin-left: -1.7rem;
+}
+
+#bol{
+    border-color: "#270F0C";
+    background-color: '#270F0C';
+}
+
+
