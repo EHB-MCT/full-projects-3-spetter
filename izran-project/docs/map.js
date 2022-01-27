@@ -7,16 +7,15 @@
  * If you are looking for production-ready output files, see mode: "production" (https://webpack.js.org/configuration/mode/).
  */
 /******/ (() => { // webpackBootstrap
-/******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
-/***/ "./src/stories.js":
-/*!************************!*\
-  !*** ./src/stories.js ***!
-  \************************/
+/***/ "./src/map.js":
+/*!********************!*\
+  !*** ./src/map.js ***!
+  \********************/
 /***/ (() => {
 
-eval("\r\nconsole.log('connected!');\r\n\r\nwindow.onload = () => {\r\n  async function runTest(){\r\n    const resp = await fetch('http://localhost:4000/api/stories-content');\r\n    const data = await resp.json();\r\n\r\n    document.getElementById('content').innerText = JSON.stringify(data);\r\n    console.log(data);\r\n  }\r\n\r\n  runTest();\r\n}\r\n\r\n\r\n\r\n\r\n\r\n\r\n\n\n//# sourceURL=webpack://izran-project/./src/stories.js?");
+eval("\n\n//# sourceURL=webpack://izran-project/./src/map.js?");
 
 /***/ })
 
@@ -27,7 +26,7 @@ eval("\r\nconsole.log('connected!');\r\n\r\nwindow.onload = () => {\r\n  async f
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module can't be inlined because the eval devtool is used.
 /******/ 	var __webpack_exports__ = {};
-/******/ 	__webpack_modules__["./src/stories.js"]();
+/******/ 	__webpack_modules__["./src/map.js"]();
 /******/ 	
 /******/ })()
 ;
