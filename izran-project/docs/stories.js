@@ -16,7 +16,7 @@
   \************************/
 /***/ (() => {
 
-eval("\r\n\r\nwindow.onload = function() {\r\n    console.log('stories js') \r\n};\n\n//# sourceURL=webpack://izran-project/./src/stories.js?");
+eval("\nconsole.log('connected!');\n\nwindow.onload = () => {\n  async function runTest(){\n    const resp = await fetch('http://localhost:4000/api/stories-content');\n    const data = await resp.json();\n\n    document.getElementById('content').innerText = JSON.stringify(data);\n    console.log(data);\n  }\n\n  runTest();\n}\n\n\n\n\n\n\n\n\n//# sourceURL=webpack://izran-project/./src/stories.js?");
 
 /***/ })
 
