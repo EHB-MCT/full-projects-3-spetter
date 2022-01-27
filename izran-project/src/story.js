@@ -1,13 +1,17 @@
-console.log('Connected!');
+"use strict"
+console.log("connected");
 
 window.onload = () => {
+
+
     async function runTest(){
-      const resp = await fetch('http://localhost:4000/api/stories-content');
+      const resp = await fetch('http://localhost:4000/api/stories-content/');
       const data = await resp.json();
+
   
       
       data.forEach(element => {
-        //console.log(element.name);
+        
        });
        
   

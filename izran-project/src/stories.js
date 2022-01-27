@@ -1,10 +1,16 @@
 "use strict"
-//console.log('connected!');
+console.log('connected!');
 
 window.onload = () => {
+
+  
+
   async function runTest(){
     const resp = await fetch('http://localhost:4000/api/stories-content');
     const data = await resp.json();
+    
+
+    
 
     //document.getElementById('content').innerText = JSON.stringify(data[0].date);
     //console.log(data[0].year);
@@ -13,9 +19,7 @@ window.onload = () => {
     data.forEach(element => {
       //console.log(element.name);
       document.getElementById('content').insertAdjacentHTML('beforeend', `
-      
-      <a href="story.html">
-    <div class="grid justify-items-center">
+    <div class="grid justify-items-center" id="story1">
         <div class="w-full md:w-11/12 xl:w-1/3 px-4">
            <div class="bg-white rounded-lg overflow-hidden mb-10">
               <img
@@ -40,7 +44,7 @@ window.onload = () => {
                        hover:text-primary
                        "
                        >
-                    ${element.name}
+                    ${element.titel}
                     </a>
                  </h3>
                  <p class="text-base text-body-color leading-relaxed mb-7">
@@ -82,25 +86,46 @@ window.onload = () => {
                     text-center
                     "
                     >
-                    ${element.cars}
+                    ${element.category}
+                 </a>
+                 <a
+                    href="javascript:void(0)"
+                    class="
+                    inline-block
+                    py-2
+                    px-7
+                    border border-[#E5E7EB]
+                    bg-orange-600
+                    font-medium
+                    hover:border-primary hover:bg-primary hover:text-white
+                    transition
+                    w-1/2
+                    h-8
+                    rounded-lg
+                    text-center
+                    "
+                    >
+                    ${element.location}
                  </a>
                 
                  </div>
               </div>
            </div>
-           </a>`) 
+           `) 
 
 
       
     });
 
   }
+  
 
+ 
   
 
   runTest();
+  
 }
-
 
 
 
