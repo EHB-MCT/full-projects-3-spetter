@@ -11,22 +11,82 @@ window.onload = () => {
     
     data.forEach(element => {
       console.log(element.name);
-      document.getElementById('content').insertAdjacentHTML('beforeend', `<a href="./story.html">
-      <div class="story rounded overflow-hidden shadow-lg grow roodkader">
-          <img class="object-cover h-64 w-full" src="/img/Screen Shot 2022-01-18 at 13.32.55.png" alt="Sunset in the mountains">
-          <div class="px-6 py-4">
-          <p class="NeueMachina font-bold  lg:text-9xl mb-2">${element.name}</p>
-          <p class="text-white small">
-            Lees dit verhaal...
-          </p>
-          </div>
-          <div class="px-6 pt-4 pb-2">
-          <span class="tag inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#Humor</span>
-          <span class="tag inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#1920</span>
-          <span class="tag inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#Al Hoceima</span>
-          </div>
-      </div>
-      </a>`) 
+      document.getElementById('content').insertAdjacentHTML('beforeend', `
+      <div class="grid justify-items-center">
+         <div class="w-full md:w-11/12 xl:w-1/3 px-4">
+            <div class="bg-white rounded-lg overflow-hidden mb-10">
+               <img
+                  src="/img/Screen Shot 2022-01-18 at 13.32.55.png"
+                  alt="image"
+                  class="w-full"
+                  />
+               <div class="p-8 sm:p-9 md:p-7 xl:p-9">
+                  <h3>
+                     <a
+                        href="javascript:void(0)"
+                        class="
+                        font-semibold
+                        text-dark text-4xl
+                        sm:text-[22px]
+                        md:text-4xl
+                        lg:text-[22px]
+                        xl:text-4xl
+                        2xl:text-[22px]
+                        mb-4
+                        block
+                        hover:text-primary
+                        "
+                        >
+                     ${element.name}
+                     </a>
+                  </h3>
+                  <p class="text-base text-body-color leading-relaxed mb-7">
+                     
+                  </p>
+                  <div class="flex mb-4 text-center">
+                    <a
+                     href="javascript:void(0)"
+                     class="
+                     inline-block
+                     py-2
+                     px-7
+                     border border-[#E5E7EB]
+                     bg-orange-600
+                     font-medium
+                     hover:border-primary hover:bg-primary hover:text-white
+                     transition
+                     w-1/2
+                     h-8
+                     rounded-lg
+                     "
+                     >
+                  ${element.year}
+                  </a>
+                  <a
+                     href="javascript:void(0)"
+                     class="
+                     inline-block
+                     py-2
+                     px-7
+                     border border-[#E5E7EB]
+                     bg-orange-600
+                     font-medium
+                     hover:border-primary hover:bg-primary hover:text-white
+                     transition
+                     w-1/2
+                     h-8
+                     rounded-lg
+                     text-center
+                     "
+                     >
+                     ${element.cars}
+                  </a>
+                 
+                  </div>
+               </div>
+            </div>
+        
+    `) 
 
       
     });
