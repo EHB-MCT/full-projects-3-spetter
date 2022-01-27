@@ -5,6 +5,7 @@ const { Router } = require('express');
 const express = require('express');
 const app = express();
 const storyRouter = Router();
+const postRouter = Router();
 const port = process.env.PORT || 3000;
 
 // MongoDb
@@ -30,10 +31,23 @@ storyRouter.route('/stories-content')
         return res.status(500).send(error)
       }
       res.json(result)
-    })
+    }) 
   });
 
 app.use('/api', storyRouter);
+
+postRouter.route('/stories-userpost')
+  .post((req, res) => {
+    collection = db.collection("stories-content");
+    
+    delete req.body._id;
+    collection.insertOne(req.body).then(result => {
+      console.log(result);
+    });
+    res.json(req.body)
+  });
+
+app.use('/api', postRouter);
 
 app.get('/', (req, res) => {
   res.send('Welcome to my Nodemon API!');

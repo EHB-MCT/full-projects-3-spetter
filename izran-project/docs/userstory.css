@@ -76,8 +76,8 @@ main svg {
 
 form {
     font-family: "neue_machinaultrabold";
-    width: 70%;
-    margin: auto;
+    /* width: 70%; */
+    margin: 2.5rem;
     padding-top: 5vh;
 }
 input{
@@ -131,15 +131,18 @@ select{
         margin: 0;
         margin-left: 1vw;
     }
+    
     #book-share{
         margin-top: 3vh;
     }
+
     header svg{
         width: 4vw;
         height: 4vh;
         padding-top: 1vh;
         margin-right: 1vw;
     }
+
     header svg:hover{
         width: 4vw;
         height: 4vh;
@@ -148,9 +151,11 @@ select{
         fill: #e6332A;
 
     }
+
     main{
         padding-bottom: 20vh;
     }
+
     #slide{
         display: flex;
         justify-content: space-around;

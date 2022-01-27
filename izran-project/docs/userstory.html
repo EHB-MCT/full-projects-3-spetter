@@ -34,25 +34,41 @@
                     <path id="Path_57" data-name="Path 57" d="M11,7A6,6,0,1,1,23,7v8a6,6,0,0,1-12,0Zm8,21.86A14,14,0,0,0,31,15a2,2,0,0,0-4,0A10,10,0,1,1,7,15a2,2,0,1,0-4,0A14,14,0,0,0,15,28.86L15,33H9a2,2,0,0,0,0,4H25a2,2,0,0,0,0-4H19Z" transform="translate(-3 -1)" fill-rule="evenodd"/>
                 </svg>   
             </div>
-            <form action="">
-                <label id="label" for="fname">Titel verhaal</label><br>
-                <input type="text" id="fname" name="fname" ><br>
-                <textarea name="message" rows="10" cols="21">Schrijf hier je verhaal
-                </textarea> <br>
+            <form id="userform" action="http://localhost:4000/api/stories-userpost">
+                <label id="label" for="name">Titel verhaal</label><br>
+                <input type="text" id="name" name="name" ><br>
+                <textarea name="text" rows="10" cols="21">Schrijf hier je verhaal
+                </textarea>
+                <br>
+                <br>
+
+                <label id="categorie" for="lname">Categorie</label><br>
+                <div name="tags">
+                  <select id="locations" name="category">
+                    <option>Humor</option>
+                    <option>Historisch</option>
+                    <option>Rifoorlog</option>
+                  </select>
+                </div>
+                <br>
+
                 <label id="label" for="lname">Locatie</label><br>
-                <select id="locations" name="cars">
+                <div>
+                  <select id="locations" name="location">
                     <option>Oujda</option>
                     <option>Nador</option>
                     <option>Al Hoceima</option>
-                  </select><br><br>
-                <label id="label" for="lname">Tijdsperiode</label><br>
-                <input type="text" id="lname" name="lname" ><br><br>
+                  </select>
+                </div>
+                <br>
+                <label id="label" for="year">Tijdsperiode</label><br>
+                <input type="text" id="lname" name="year" ><br><br>
                 <input id="btn" type="submit" value="Submit">
               </form> 
         </main>
 
     </div>
 
-
+<script src="./userstory.js"></script>
 </body>
 </html>
