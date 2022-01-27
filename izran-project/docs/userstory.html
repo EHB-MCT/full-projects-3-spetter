@@ -15,39 +15,66 @@
             <img id="logo" src="../../img/logo-zwart.svg" alt="logo-izran-revisited">
             </a>
             <div id="book-share">
-                <a href="./stories.html">
-                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="22.77" viewBox="0 0 32 22.77">
+
+                <a href="../docs/stories.html"> 
+                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="22.77" viewBox="0 0 32 22.77">
                     <path id="Path_68" data-name="Path 68" d="M16,5.608a16.04,16.04,0,0,0-14,0v20A16.021,16.021,0,0,1,18,26.77a16.021,16.021,0,0,1,16-1.162v-20a16.04,16.04,0,0,0-14,0V20a2,2,0,1,1-4,0Z" transform="translate(-2 -4)"/>
-                </svg>
-                </a>           
+                    </svg></a>
+                <a href="../docs/timeline.html">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                        <path d="M10.394 2.08a1 1 0 00-.788 0l-7 3a1 1 0 000 1.84L5.25 8.051a.999.999 0 01.356-.257l4-1.714a1 1 0 11.788 1.838L7.667 9.088l1.94.831a1 1 0 00.787 0l7-3a1 1 0 000-1.838l-7-3zM3.31 9.397L5 10.12v4.102a8.969 8.969 0 00-1.05-.174 1 1 0 01-.89-.89 11.115 11.115 0 01.25-3.762zM9.3 16.573A9.026 9.026 0 007 14.935v-3.957l1.818.78a3 3 0 002.364 0l5.508-2.361a11.026 11.026 0 01.25 3.762 1 1 0 01-.89.89 8.968 8.968 0 00-5.35 2.524 1 1 0 01-1.4 0zM6 18a1 1 0 001-1v-2.065a8.935 8.935 0 00-2-.712V17a1 1 0 001 1z" />
+                    </svg></a>
+                <a href="../docs/map.html">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M12 1.586l-4 4v12.828l4-4V1.586zM3.707 3.293A1 1 0 002 4v10a1 1 0 00.293.707L6 18.414V5.586L3.707 3.293zM17.707 5.293L14 1.586v12.828l2.293 2.293A1 1 0 0018 16V6a1 1 0 00-.293-.707z" clip-rule="evenodd" />
+                    </svg></a>
             </div>
         </header>
         <main>
             <div id="story">
-                <h1>Schrijf je verhaal</h1>
-                <h1>of neem het op!</h1>
+                <h1>Deel je verhaal</h1>
+                <!-- <h1>of neem het op!</h1> -->
             </div>
-            <div id="icons">
-
-                
+<!--             <div id="icons">
                 <svg xmlns="http://www.w3.org/2000/svg" width="28" height="36" viewBox="0 0 28 36">
                     <path id="Path_57" data-name="Path 57" d="M11,7A6,6,0,1,1,23,7v8a6,6,0,0,1-12,0Zm8,21.86A14,14,0,0,0,31,15a2,2,0,0,0-4,0A10,10,0,1,1,7,15a2,2,0,1,0-4,0A14,14,0,0,0,15,28.86L15,33H9a2,2,0,0,0,0,4H25a2,2,0,0,0,0-4H19Z" transform="translate(-3 -1)" fill-rule="evenodd"/>
-                </svg>   
+                </svg>                   
             </div>
+ -->            
+            
             <form action="">
-                <label id="label" for="fname">Titel verhaal</label><br>
-                <input type="text" id="fname" name="fname" ><br>
+                <!-- AUDIO RECORDER -->
+            <!--<input type="file" accept="audio/*" capture id="recorder">
+                <audio id="player" controls></audio>
+                <script>
+                    const recorder = document.getElementById('recorder');
+                    const player = document.getElementById('player');
+                                
+                    recorder.addEventListener('change', function(e) {
+                        const file = e.target.files[0];
+                        const url = URL.createObjectURL(file);
+                        // Do something with the audio file.
+
+
+
+                        player.src = url;
+                    });
+                </script>   -->
+
+
+                <label id="label" for="titel">Titel verhaal</label><br>
+                <input type="text" id="titel" name="titel" ><br>
                 <textarea name="message" rows="10" cols="21">Schrijf hier je verhaal
                 </textarea> <br>
-                <label id="label" for="lname">Locatie</label><br>
-                <select id="locations" name="cars">
+                <label id="label" for="location">Locatie</label><br>
+                <select id="locations" name="location">
                     <option>Oujda</option>
                     <option>Nador</option>
                     <option>Al Hoceima</option>
-                  </select><br><br>
-                <label id="label" for="lname">Tijdsperiode</label><br>
-                <input type="text" id="lname" name="lname" ><br><br>
-                <input id="btn" type="submit" value="Submit">
+                </select><br><br>
+                <label id="label" for="tp">Tijdsperiode</label><br>
+                <input type="text" id="tp" name="tp" ><br><br>
+                <input id="btn" type="submit" value="Indienen">
               </form> 
         </main>
 
