@@ -1,4 +1,7 @@
 "use strict"
+
+const { forEach } = require("lodash");
+
 console.log('connected!');
 
 window.onload = () => {
@@ -9,17 +12,12 @@ window.onload = () => {
     const resp = await fetch('http://localhost:4000/api/stories-content');
     const data = await resp.json();
     
-
-    
-
-    //document.getElementById('content').innerText = JSON.stringify(data[0].date);
-    //console.log(data[0].year);
-    //console.log(data[0]._id);
+   
     
     data.forEach(element => {
       //console.log(element.name);
       document.getElementById('content').insertAdjacentHTML('beforeend', `
-    <div class="grid justify-items-center" id="story1">
+    <div class="grid justify-items-center button" id="story1" action="http://localhost:4000/api/stories-content" data-id="${element._id}"/>
         <div class="w-full md:w-11/12 xl:w-1/3 px-4">
            <div class="bg-white rounded-lg overflow-hidden mb-10">
               <img
@@ -112,20 +110,57 @@ window.onload = () => {
               </div>
            </div>
            `) 
-
-
-      
+   
     });
 
   }
+
+  async function redirect(){
+   await runTest();
+
+   console.log('werkt');
+
+
+   document.querySelectorAll('.button').forEach(item => { 
+      item.addEventListener('click', e => {  
+         //console.log(e.target);
+         let closestElement = e.target.closest(".button");
+         //console.log(closestElement.getAttribute("data-id"));
+         let storyId = closestElement.getAttribute("data-id");
+         console.log(storyId);
+         
+         sessionStorage.setItem("storyId", storyId);
+         document.location.href = 'story.html';
+
+   }) })
+   
+     
+
+}
+  
+  redirect();
+
+  
+
+  }
+
+  
+
+  
+  
+
+  
+
+  
+ 
+
   
 
  
+
+  
   
 
-  runTest();
-  
-}
 
 
 
