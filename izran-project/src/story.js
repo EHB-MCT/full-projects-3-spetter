@@ -30,13 +30,26 @@ window.onload = () => {
         ${eersteVerhaal.message}
         </p>
         </div>`)
-        //console.log(data);
+
+        /**document.getElementById('content').insertAdjacentHTML('beforeend', `<div id="story">
+        <h1>${data[0].titel}</h1>
+        <img src="../../img/img1.png" alt="">
+        <p>
+        ${data[0].message}
+        </p>
+        </div>`) */
+        
 
     
     }
-
-    
     runTest();
+
+    let fowardButton = document.getElementById('forward');
+    fowardButton.addEventListener('click', e => {
+
+        
+        
+    })
 
   }
 
