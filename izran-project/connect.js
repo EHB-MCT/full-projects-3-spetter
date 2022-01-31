@@ -30,7 +30,7 @@ app.use(cors());
 storyRouter.route('/stories-content')
   .get((req, res) => {
     collection = db.collection("stories-content");
-    collection.find({}).toArray((error, result) => {
+    const cursor = collection.find({}).toArray((error, result) => {
       if(error){
         return res.status(500).send(error)
       }
