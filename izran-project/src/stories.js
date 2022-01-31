@@ -118,7 +118,7 @@ window.onload = () => {
   async function redirect(){
    await runTest();
 
-   console.log('werkt');
+   //console.log('werkt');
 
 
    document.querySelectorAll('.button').forEach(item => { 
