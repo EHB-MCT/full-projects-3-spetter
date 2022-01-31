@@ -92,6 +92,7 @@ main{
 }
 .overlay:target {
     visibility: visible;
+    transition: 2s ease-out;
     opacity: 1;
 }
   

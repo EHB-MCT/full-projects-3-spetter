@@ -16,7 +16,7 @@
   \**********************/
 /***/ (() => {
 
-eval("\r\nconsole.log(\"connected\");\r\n\r\nwindow.onload = () => {\r\n    let storyId = sessionStorage.getItem(\"storyId\");\r\n    console.log(storyId);\r\n\r\n    \r\n    \r\n  }\r\n\r\n\r\n/** \r\nconst html = ` <div id=\"story\">\r\n<h1>Dhja en de kat</h1>\r\n<img src=\"../../img/img1.png\" alt=\"\">\r\n<p>\r\n\r\n</p>\r\n</div>`;\r\n*/\r\n\n\n//# sourceURL=webpack://izran-project/./src/story.js?");
+eval("\nconsole.log(\"connected\");\n\nwindow.onload = () => {\n    let storyId = sessionStorage.getItem(\"storyId\");\n    console.log(storyId);\n\n    \n    \n  }\n\n\n/** \nconst html = ` <div id=\"story\">\n<h1>Dhja en de kat</h1>\n<img src=\"../../img/img1.png\" alt=\"\">\n<p>\n\n</p>\n</div>`;\n*/\n\n\n//# sourceURL=webpack://izran-project/./src/story.js?");
 
 /***/ })
 

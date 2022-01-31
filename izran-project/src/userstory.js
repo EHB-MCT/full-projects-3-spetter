@@ -35,6 +35,14 @@ async function postFormDataAsJson({ url, formData }) {
   }
 }
 
+function styleSubmittedForm() {
+  // Cosima: add style in dit script
+  document.getElementById('popup').classList.add('active')
+  setTimeout(() => {
+    window.location.reload();
+  }, 2000);
+}
+
 /**
  * Event handler for a form submit event.
  *
@@ -52,8 +60,10 @@ async function handleFormSubmit(event) {
 	try {
 		const formData = new FormData(form);
 		const responseData = await postFormDataAsJson({ url, formData });
-
-		console.log({ responseData });
+    document.getElementById("userform").reset();
+    setTimeout(() => {
+      styleSubmittedForm();
+    }, 500);
 	} catch (error) {
 		console.error(error);
 	}
