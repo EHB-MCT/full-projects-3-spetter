@@ -18,8 +18,8 @@ window.onload = () => {
       //console.log(element.name);
       document.getElementById('content').insertAdjacentHTML('beforeend', `
     <div class="grid justify-items-center button" id="story1" action="http://localhost:4000/api/stories-content" data-id="${element._id}"/>
-        <div class="w-full md:w-11/12 xl:w-1/3 px-4">
-           <div class="bg-white rounded-lg overflow-hidden mb-10">
+        <div ">
+           <div class="bg-white rounded-3xl overflow-hidden mb-10">
               <img
                  src="/img/Screen Shot 2022-01-18 at 13.32.55.png"
                  alt="image"
