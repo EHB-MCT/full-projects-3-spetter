@@ -14,7 +14,6 @@ header{
 }
 #book-share{
     margin-top: 3vh;
-    width: 37%;
     display: flex;
     flex-flow: row;
 }

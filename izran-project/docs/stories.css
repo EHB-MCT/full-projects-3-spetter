@@ -3,6 +3,11 @@
     src: url("../../fonts/NeueMachina-Ultrabold.ttf")
 }
 
+h1{
+    font-family: 'neue_machinaultrabold';
+    
+}
+
 body {
     background-color: #F9F7ED;
     margin: 0;
