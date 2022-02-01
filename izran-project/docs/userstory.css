@@ -6,9 +6,7 @@
 
 }
 
-main{
-    padding-bottom: 20vh;
-}
+
 #slide{
     display: flex;
     justify-content: space-around;
@@ -50,7 +48,7 @@ audio{
 
 }
 
-main svg {
+#micro svg {
     padding-top: 5vh;
     padding-right: 5vw;
     padding-left: 5vw;
