@@ -46,3 +46,12 @@ h1{
     font-family: "neue_machinaultrabold";
     color: #270F0C;
 }
+
+h2{
+    font-family: "neue_machinaultrabold";   
+    font-size: 1rem;
+}
+
+svg{
+    fill: #270F0C;
+}
