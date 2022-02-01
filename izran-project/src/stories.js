@@ -17,8 +17,7 @@ window.onload = () => {
     data.forEach(element => {
       //console.log(element.name);
       document.getElementById('content').insertAdjacentHTML('beforeend', `
-      <div class="grid justify-items-center button" id="story1" action="http://localhost:4000/api/stories-content" data-id="${element._id}"></div>
-      <div>
+      <div class="grid justify-items-center button" id="story1" action="http://localhost:4000/api/stories-content" data-id="${element._id}">
         <div class="w-11/12 m-auto rounded-3xl overflow-hidden mb-10 bg-red-600">
           <img src="/img/stories/afbeelding-20220201-094356-8508b913.jpeg" alt="image" class="w-full h-1/2"/>
           <div class="p-8 sm:p-9 md:p-7 xl:p-9">
@@ -99,7 +98,6 @@ window.onload = () => {
          
          sessionStorage.setItem("storyId", storyId);
          document.location.href = 'story.html';
-
    }) })
    
      
