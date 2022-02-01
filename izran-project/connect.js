@@ -45,8 +45,8 @@ storyRouter.route('/stories-content')
       if(error){
         return res.status(500).send(error)
       }
-      res.json(result)
-      res.redirect("https:")
+      res.json(result);
+      //res.redirect("https:");
     })
   });
 
