@@ -15,16 +15,6 @@ window.onload = () => {
         const resp = await fetch(`http://localhost:4000/api/stories-content/${storyId}`);
         const data = await resp.json();
 
-        
-
-        /**data.forEach(element => {
-            if(element._id == storyId){
-                //console.log('joepie, ' + element._id + ' = ' + storyId);
-                eersteVerhaal = element;
-                index = data.indexOf(element);
-            }
-        }) */
-
         document.getElementById('content').insertAdjacentHTML('beforeend', `<div id="story">
         <h1>${data[0].titel}</h1>
         <img src="../../img/img1.png" alt="">
@@ -33,17 +23,11 @@ window.onload = () => {
         </p>
         </div>`);
 
-        /**document.getElementById('content').insertAdjacentHTML('beforeend', `<div id="story">
-        <h1>${data[0].titel}</h1>
-        <img src="../../img/img1.png" alt="">
-        <p>
-        ${data[0].message}
-        </p>
-        </div>`) */
         
 
     
     }
+
     scrollThrough();
 
 
@@ -54,54 +38,117 @@ window.onload = () => {
 
         data.forEach(element => {
             if(element._id == storyId){
-                //console.log('joepie, ' + element._id + ' = ' + storyId);
                 eersteVerhaal = element;
                 index = data.indexOf(element);
             }
         })
+
         data.unshift(data.splice(index, 1)[0]);
-        //console.log(data);
 
+        let nextIndex= 0;
+        let prevIndex= 0;
 
-
+        
+        //next story
         let fowardButton = document.getElementById('forward');
         fowardButton.addEventListener('click', e => {
-            console.log(index);
 
-        //index += 1;
+            nextIndex++;
+
+            if(nextIndex === data.length){
+            nextIndex = 0;
+            } 
+            
+            console.log(nextIndex);
+        
+
         document.getElementById('content').innerHTML = `<div id="story">
-        <h1>${data[index].titel}</h1>
+        <h1>${data[nextIndex].titel}</h1>
         <img src="../../img/img1.png" alt="">
         <p>
-        ${data[index].message}
+        ${data[nextIndex].message}
         </p>
         </div>`;
 
         });
 
+
+        //previous story
         let backwardButton = document.getElementById('backward');
         backwardButton.addEventListener('click', e => {
-            console.log(index);
-
         
+            prevIndex++;
+
+            if(prevIndex === data.length){
+            prevIndex = 0;
+            } 
 
         document.getElementById('content').innerHTML = `<div id="story">
-        <h1>${data[index].titel}</h1>
+        <h1>${data[prevIndex].titel}</h1>
         <img src="../../img/img1.png" alt="">
         <p>
-        ${data[index].message}
+        ${data[prevIndex].message}
         </p>
         </div>`;
 
-        index -=1;
-        
-
         });
-
+       
     }
 
     
 
   }
 
+/**
+  data.unshift(data.splice(index, 1)[0]);
 
+        
+
+
+        //Next story
+        let fowardButton = document.getElementById('forward');
+        fowardButton.addEventListener('click', e => {
+            index += 1;
+            console.log(index);
+
+        
+        document.getElementById('content').innerHTML = `<div id="story">
+        <h1>${data[index].titel}</h1>
+        <img src="../../img/img1.png" alt="">
+        <p>
+        ${data[index].message}
+        </p>
+        </div>`;
+
+        });
+
+
+        //Previous story
+        let backwardButton = document.getElementById('backward');
+        backwardButton.addEventListener('click', e => {
+            console.log(index);
+
+            
+            if(index == 0){
+                data.reverse();
+            } else if(index = data.lenght){
+                index = 0;
+            }
+            
+            index += 1;
+            //console.log(data);  
+                
+            document.getElementById('content').innerHTML = `<div id="story">
+            <h1>${data[index].titel}</h1>
+            <img src="../../img/img1.png" alt="">
+            <p>
+            ${data[index].message}
+            </p>
+            </div>`;
+            
+        
+            index++;
+
+        });
+
+ */
