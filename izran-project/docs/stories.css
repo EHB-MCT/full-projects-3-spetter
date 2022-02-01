@@ -4,75 +4,48 @@
 }
 
 h1{
-    font-family: 'neue_machinaultrabold';
-    
-}
-
-body {
-    background-color: #F9F7ED;
-    margin: 0;
-}
-
-.roodkader {
-    background-color: #E6332A;
-}
-
-/* .roodkader {
-    background-image: linear-gradient(170deg, #F9F7ED, #F9F7ED, #F9F7ED, #F9F7ED,  #da4a45);
-} */
-
-.NeueMachina {
-    font-family: 'Neue Machina';
-}
-
-.stories-container {
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    justify-content: center;
-}
-
-.story-title {
     margin: 16px 0px;
-    font-size: 6rem
+    font-size: 6rem;   
 }
 
-p {
-    font-size: 3rem;
+h2{
+    font-family: "neue_machinaultrabold";   
+}
+#themas{
+    font-family: "neue_machinaultrabold";   
+    padding-top: 1rem;
 }
 
-.small {
-    font-weight: 300;
-    font-size: 1.5rem;
+#themas{
+    width: 30%;
+    color: #270F0C;
 }
 
-.tag {
-    font-size: 1.5rem;
-}
-
-.story {
-    flex: 1 1 100%; /*  Stretching: */
-    /* margin: 5px; */
-
-}
-
-@media only screen and (max-width: 640px) {      
-
-.stories-container {
+.tags{
     display: flex;
-    flex-direction: row;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: space-between;
+    width: 90%;
+    margin: auto;
 }
-    .story-title {
-        margin: 16px 0px;
-        font-size: initial;
-    }
-
-  
-
-    .story {
-    flex: 1 1 150px; /*  Stretching: */
-    /* margin: 5px; */
+.tags div{
+    background-color: #270F0C
+    ;
+    padding: 1vw 2vh;
+    margin-bottom: 2vh;
+    align-content: center;
+    font-size: 2rem;
+    font-family: "neue_machinaultrabold";   
+    color: #F9F7ED;
+    border-radius: 30px;
 }
+.tags div:hover{
+    background-color: red;
+    padding: 1vw 2vh;
+    margin-bottom: 2vh;
+    align-content: center;
+    font-size: 3rem;
+    font-family: "neue_machinaultrabold";   
+    color: #F9F7ED;
+    border-radius: 30px;
 }

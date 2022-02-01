@@ -1,9 +1,18 @@
+body{
+    background-color: #F9F7ED;
+    margin: 0;
+}
+
 header{
     background-color: #F9F7ED;
     width: 100%;
     height: 15vh;
     display: flex;
     justify-content: space-between;
+}
+
+svg{
+    fill: #270F0C;
 }
 
 #logo{
@@ -31,4 +40,9 @@ header svg:hover{
 body {
     background-color: #F9F7ED;
     margin: 0;
+}
+
+h1{
+    font-family: "neue_machinaultrabold";
+    color: #270F0C;
 }

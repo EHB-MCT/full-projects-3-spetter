@@ -1,9 +1,3 @@
-body{
-    margin: 0;
-    background-color: #F9F7ED;
-
-}
-
 #kaart{
     z-index: 0;
     display: fixed;
@@ -14,7 +8,6 @@ body{
 }
 
 h1{
-    font-family: 'neue_machinaultrabold';
     text-align: center
 }
 

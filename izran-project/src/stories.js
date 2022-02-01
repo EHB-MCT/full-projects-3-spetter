@@ -17,98 +17,66 @@ window.onload = () => {
     data.forEach(element => {
       //console.log(element.name);
       document.getElementById('content').insertAdjacentHTML('beforeend', `
-    <div class="grid justify-items-center button" id="story1" action="http://localhost:4000/api/stories-content" data-id="${element._id}"/>
-        <div ">
-           <div class="bg-white rounded-3xl overflow-hidden mb-10">
-              <img
-                 src="/img/Screen Shot 2022-01-18 at 13.32.55.png"
-                 alt="image"
-                 class="w-full"
-                 />
-              <div class="p-8 sm:p-9 md:p-7 xl:p-9">
-                 <h3>
-                    <a
-                       href="javascript:void(0)"
-                       class="
-                       font-semibold
-                       text-dark text-4xl
-                       sm:text-[22px]
-                       md:text-4xl
-                       lg:text-[22px]
-                       xl:text-4xl
-                       2xl:text-[22px]
-                       mb-4
-                       block
-                       hover:text-primary
-                       "
-                       >
-                    ${element.titel}
-                    </a>
-                 </h3>
-                 <p class="text-base text-body-color leading-relaxed mb-7">
-                    
-                 </p>
-                 <div class="flex mb-4 text-center">
-                   <a
-                    href="javascript:void(0)"
-                    class="
-                    inline-block
-                    py-2
-                    px-7
-                    border border-[#E5E7EB]
-                    bg-orange-600
-                    font-medium
-                    hover:border-primary hover:bg-primary hover:text-white
-                    transition
-                    w-1/2
-                    h-8
-                    rounded-lg
-                    "
-                    >
-                 ${element.year}
-                 </a>
-                 <a
-                    href="javascript:void(0)"
-                    class="
-                    inline-block
-                    py-2
-                    px-7
-                    border border-[#E5E7EB]
-                    bg-orange-600
-                    font-medium
-                    hover:border-primary hover:bg-primary hover:text-white
-                    transition
-                    w-1/2
-                    h-8
-                    rounded-lg
-                    text-center
-                    "
-                    >
-                    ${element.category}
-                 </a>
-                 <a
-                    href="javascript:void(0)"
-                    class="
-                    inline-block
-                    py-2
-                    px-7
-                    border border-[#E5E7EB]
-                    bg-orange-600
-                    font-medium
-                    hover:border-primary hover:bg-primary hover:text-white
-                    transition
-                    w-1/2
-                    h-8
-                    rounded-lg
-                    text-center
-                    "
-                    >
-                    ${element.location}
-                 </a>
-                
-                 </div>
+      <div class="grid justify-items-center button" id="story1" action="http://localhost:4000/api/stories-content" data-id="${element._id}"></div>
+      <div>
+        <div class="w-11/12 m-auto rounded-3xl overflow-hidden mb-10 bg-red-600">
+          <img src="/img/stories/afbeelding-20220201-094356-8508b913.jpeg" alt="image" class="w-full h-1/2"/>
+          <div class="p-8 sm:p-9 md:p-7 xl:p-9">
+            <h2 class="font-semibold 
+              text-6xl 
+              text-white
+              mb-4
+              block
+              hover:text-primary
+              ">
+               ${element.titel}
+            </h2>
+            <p class="text-base text-body-color leading-relaxed mb-7"></p>
+            <div class="flex justify-between mb-4">
+              <div id="themas" class="
+              flex-initial
+              py-2
+              px-8
+              bg-white
+              text-3xl
+              w-72
+              h-16
+              rounded-3xl
+              text-center
+              ">
+                ${element.year}
               </div>
-           </div>
+              <div id="themas" class="
+              flex-initial
+              py-2
+              px-8
+              bg-white
+              text-3xl
+              w-72
+              h-16
+              rounded-3xl
+              text-center
+              ">
+                ${element.category}
+              </div>
+              <div id="themas" class="
+              flex-initial
+              inline-block
+              py-2
+              px-8
+              bg-white
+              text-3xl
+              w-72
+              h-16
+              rounded-3xl
+              text-center
+              ">
+                ${element.location}
+              </div>
+            </div>  
+          </div>
+        </div>
+      </div>
            `) 
    
     });
