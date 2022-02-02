@@ -11,10 +11,6 @@ header{
     justify-content: space-between;
 }
 
-svg{
-    fill: #270F0C;
-}
-
 #logo{
     width: 15vw;
     height: 10vh;
@@ -36,10 +32,6 @@ header svg:hover{
     height: 7vh;
     margin-right: 5vw;
     fill: #e6332A;
-}
-body {
-    background-color: #F9F7ED;
-    margin: 0;
 }
 
 h1{
