@@ -22,7 +22,7 @@ window.onload = () => {
           <img src="/img/stories/afbeelding-20220201-094356-8508b913.jpeg" alt="image" class="w-full h-1/2"/>
           <div class="p-8 sm:p-9 md:p-7 xl:p-9">
             <h2 class="font-semibold 
-              text-6xl 
+              text-5xl 
               text-white
               mb-4
               block
@@ -34,7 +34,7 @@ window.onload = () => {
             <div class="flex justify-between mb-4">
               <div id="themas" class="
               flex-initial
-              py-2
+              py-1
               px-8
               bg-white
               text-3xl
@@ -47,7 +47,7 @@ window.onload = () => {
               </div>
               <div id="themas" class="
               flex-initial
-              py-2
+              py-1
               px-8
               bg-white
               text-3xl
@@ -61,7 +61,7 @@ window.onload = () => {
               <div id="themas" class="
               flex-initial
               inline-block
-              py-2
+              py-1
               px-8
               bg-white
               text-3xl

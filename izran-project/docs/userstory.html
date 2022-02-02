@@ -35,68 +35,73 @@
                 </a>
             </div>
         </header>        
-        <main>
             <div id="story">
-                <h1>Deel je verhaal</h1>
-                <!-- <h1>of neem het op!</h1> -->
+                <h1>Wat leuk dat je verhaal komt delen!</h1>
+                <h2>Druk op de micro om te beginnen op te nemen. Als je dat niet wilt: scroll verder naar beneden</h2>
             </div>
-            <div id="icons">
-                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="36" viewBox="0 0 28 36">
-                    <path id="Path_57" data-name="Path 57" d="M11,7A6,6,0,1,1,23,7v8a6,6,0,0,1-12,0Zm8,21.86A14,14,0,0,0,31,15a2,2,0,0,0-4,0A10,10,0,1,1,7,15a2,2,0,1,0-4,0A14,14,0,0,0,15,28.86L15,33H9a2,2,0,0,0,0,4H25a2,2,0,0,0,0-4H19Z" transform="translate(-3 -1)" fill-rule="evenodd"/>
-                </svg>                   
-            </div>
+
+
+            <form id="userform" action="http://localhost:4000/api/stories-userpost">
 
             <!-- AUDIO RECORDER -->
-            <!--<input type="file" accept="audio/*" capture id="recorder">
-                <audio id="player" controls></audio>
-                <script>
-                    const recorder = document.getElementById('recorder');
-                    const player = document.getElementById('player');
-                                
-                    recorder.addEventListener('change', function(e) {
-                        const file = e.target.files[0];
-                        const url = URL.createObjectURL(file);
-                        // Do something with the audio file.
+              <!-- <button id="button">
+                <div id="micro">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 28 36">
+                      <path id="Path_57" data-name="Path 57" d="M11,7A6,6,0,1,1,23,7v8a6,6,0,0,1-12,0Zm8,21.86A14,14,0,0,0,31,15a2,2,0,0,0-4,0A10,10,0,1,1,7,15a2,2,0,1,0-4,0A14,14,0,0,0,15,28.86L15,33H9a2,2,0,0,0,0,4H25a2,2,0,0,0,0-4H19Z" transform="translate(-3 -1)" fill-rule="evenodd"/>
+                  </svg>                   
+                </div>
+                <input type="file" accept="audio/*" capture id="recorder">
+              </button> <br>
+
+              <audio id="player" controls></audio>
+              <script>
+                  const recorder = document.getElementById('recorder');
+                  const player = document.getElementById('player');
+                              
+                  recorder.addEventListener('change', function(e) {
+                      const file = e.target.files[0];
+                      const url = URL.createObjectURL(file);
+                      // Do something with the audio file.
 
 
 
-                        player.src = url;
-                    });
-                </script>   -->
-          
-            <form id="userform" action="http://localhost:4000/api/stories-userpost">
-                  <label id="label" for="titel">Titel verhaal</label><br>
+                      player.src = url;
+                  });
+              </script> -->
+
+                  <label id="label" for="titel">Hoe heet je verhaal?</label><br>
                 <input type="text" id="titel" name="titel" ><br>
-                <textarea name="message" rows="10" cols="21" placeholder="Schrijf hier je verhaal"></textarea> 
+                <textarea name="message" rows="10" cols="21" placeholder="Schrijf hier je verhaal. (Moest je het niet willen opnemen)"></textarea> 
                 <br>
                 <br>
 
-                <label id="categorie" for="lname">Categorie</label><br>
+                <label id="categorie" for="lname">Waarover gaat je verhaal?</label><br>
                 <div name="tags">
                   <select id="locations" name="category">
-                    <option>Humor</option>
+                    <option>Familie</option>
                     <option>Historisch</option>
                     <option>Rifoorlog</option>
+                    <option>Vriendschap</option>
+                    <option>Landschap</option>
+                    <option>Liefde</option>
+                    <option>Muziek</option>
+                    <option>Avontuur</option>
                   </select>
                 </div>
                 <br>
 
-                <label id="label" for="lname">Locatie</label><br>
-                <div>
-                  <select id="locations" name="location">
-                    <option>Oujda</option>
-                    <option>Nador</option>
-                    <option>Al Hoceima</option>
-                  </select>
-                </div>
+                <label id="label" for="place">Waar vind het plaats?</label><br>
+                <input type="text" id="place" name="titel" ><br>
                 <br>
-                <label id="label" for="year">Tijdsperiode</label><br>
-                <input type="text" id="lname" name="year" ><br><br>
+                <label id="label" for="year">Wanneer gebeurde het?</label><br>
+                <input type="text" id="year" name="year" ><br><br>
                 <input id="btn" type="submit" value="Submit">
             </form> 
+
+
             <div id="popup">
               <div id="container">
-                <div id="alert">Your story has been succesfully submitted!</div>
+                <div id="alert">We hebben, je verhaal goed ontvangen! Dankje wel!</div>
               </div>
               <div>
                 <div id="icon">
@@ -106,7 +111,6 @@
                 </div>
               </div>
             </div>
-        </main>
 
     </div>
 
