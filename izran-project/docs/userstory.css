@@ -99,8 +99,10 @@ select{
   padding: 20px;
   border-radius: 10px;
   backdrop-filter: blur(10px);
-  background: #FD8E3F;
+  background: #E94E1B;
   transform: translate(-50%, -50%) scale(0);
+  font-family: "neue_machinaultrabold";
+  color: white;
 }
 
 #popup.active {
