@@ -49,6 +49,17 @@ storyRouter.route('/stories-content')
       //res.redirect("https:");
     })
   });
+  storyRouter.route('/stories-content/:category')
+  .get((req, res) => {
+    collection = db.collection("stories-content");
+    collection.find({_id: req.params.id}).toArray((error, result) => {
+      if(error){
+        return res.status(500).send(error)
+      }
+      res.json(result);
+      //res.redirect("https:");
+    })
+  });
 
 
 
