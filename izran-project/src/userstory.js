@@ -1,4 +1,7 @@
 "use strict"
+
+const { chunk } = require("lodash");
+
 console.log('connected!');
 
 window.onload = () => {
@@ -71,4 +74,84 @@ async function handleFormSubmit(event) {
 
 const userForm = document.getElementById("userform");
 userForm.addEventListener("submit", handleFormSubmit);
+
+
+//record audio function
+
+const startStop = document.getElementById('micro');
+
+//const record = document.getElementById('record');
+//const stop = document.getElementById('stop');
+const soundClips = document.getElementById('soundClips');
+let chunks = [];
+
+let constraintObj = {audio: true};
+
+if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+	console.log('getUserMedia supported.');
+	navigator.mediaDevices.getUserMedia (constraintObj)
+	   .then(stream => {
+		   const mediaRecorder = new MediaRecorder(stream);
+
+		   startStop.addEventListener('click', start);
+
+		   function start(){
+			startStop.removeEventListener('click', start);
+			startStop.addEventListener('click', stop);
+			startStop.value = "stop";
+
+			mediaRecorder.start();
+			console.log(mediaRecorder.state);
+			console.log("recorder started");
+		   }
+
+		   function stop(){
+			startStop.removeEventListener('click', stop);
+			startStop.addEventListener('click', start);
+			startStop.value = "start";
+
+			mediaRecorder.stop();
+			console.log(mediaRecorder.state);
+			console.log("recorder stopped");
+		   }
+
+			/**record.addEventListener('click', () => {
+				mediaRecorder.start();
+				console.log(mediaRecorder.state);
+				console.log("recorder started");
+			}) */
+
+			mediaRecorder.ondataavailable = function(e) {
+				chunks.push(e.data);
+			}
+
+			/**stop.addEventListener('click', () => {
+				mediaRecorder.stop();
+				console.log(mediaRecorder.state);
+				console.log("recorder stopped");
+			}) */
+
+			mediaRecorder.onstop = (e) => {
+				let blob = new Blob(chunks, {'type' : 'audio/ogg; codecs=opus'});
+				chunks = [];
+				let audioUrl = window.URL.createObjectURL(blob);
+				soundClips.src = audioUrl;
+
+				//prepare audioURL for transfer to mongodb/audiomap
+
+
+			}
+
+		   
+	   })
+	   // Error callback
+	   .catch(function(err) {
+		  console.log('The following getUserMedia error occurred: ' + err);
+	   }
+	);
+ } 
+
+
+
 }
+
