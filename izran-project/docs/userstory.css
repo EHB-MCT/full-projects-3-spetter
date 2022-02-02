@@ -90,6 +90,13 @@ select{
     font-family: "neue_machinaultrabold";
 }
 
+
+audio::-webkit-media-controls-panel{
+    background-color:#E94E1B !important;
+}
+
+
+
 /* Popup system */
 
 #popup {
