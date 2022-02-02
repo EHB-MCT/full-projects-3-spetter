@@ -79,9 +79,6 @@ userForm.addEventListener("submit", handleFormSubmit);
 //record audio function
 
 const startStop = document.getElementById('micro');
-
-//const record = document.getElementById('record');
-//const stop = document.getElementById('stop');
 const soundClips = document.getElementById('soundClips');
 let chunks = [];
 
@@ -99,6 +96,8 @@ if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
 			startStop.removeEventListener('click', start);
 			startStop.addEventListener('click', stop);
 			startStop.value = "stop";
+			
+			
 
 			mediaRecorder.start();
 			console.log(mediaRecorder.state);
@@ -109,27 +108,17 @@ if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
 			startStop.removeEventListener('click', stop);
 			startStop.addEventListener('click', start);
 			startStop.value = "start";
+			//startStop.style.fill = 'FireBrick';
 
 			mediaRecorder.stop();
 			console.log(mediaRecorder.state);
 			console.log("recorder stopped");
+			//startStop.style.fill = 'Black';
 		   }
-
-			/**record.addEventListener('click', () => {
-				mediaRecorder.start();
-				console.log(mediaRecorder.state);
-				console.log("recorder started");
-			}) */
 
 			mediaRecorder.ondataavailable = function(e) {
 				chunks.push(e.data);
 			}
-
-			/**stop.addEventListener('click', () => {
-				mediaRecorder.stop();
-				console.log(mediaRecorder.state);
-				console.log("recorder stopped");
-			}) */
 
 			mediaRecorder.onstop = (e) => {
 				let blob = new Blob(chunks, {'type' : 'audio/ogg; codecs=opus'});
