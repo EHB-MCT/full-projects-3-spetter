@@ -6,24 +6,27 @@
  * or disable the default devtool with "devtool: false".
  * If you are looking for production-ready output files, see mode: "production" (https://webpack.js.org/configuration/mode/).
  */
-/** *** */ (() => { // webpackBootstrap
-/** *** */ 	const __webpack_modules__ = ({
+/******/ (() => { // webpackBootstrap
+/******/ 	var __webpack_modules__ = ({
 
-    /***/ './src/timeline.js':
-    /*! *************************!*\
+/***/ "./src/timeline.js":
+/*!*************************!*\
   !*** ./src/timeline.js ***!
-  \************************ */
-    /***/ (() => {
-      eval('\n\n//# sourceURL=webpack://izran-project/./src/timeline.js?');
-      /***/ }),
+  \*************************/
+/***/ (() => {
 
-    /** *** */ 	});
-  /** ********************************************************************* */
-  /** *** */
-  /** *** */ 	// startup
-  /** *** */ 	// Load entry module and return exports
-  /** *** */ 	// This entry module can't be inlined because the eval devtool is used.
-  /** *** */ 	const __webpack_exports__ = {};
-  /** *** */ 	__webpack_modules__['./src/timeline.js']();
-/** *** */
-/** *** */ })();
+eval("\n\n//# sourceURL=webpack://izran-project/./src/timeline.js?");
+
+/***/ })
+
+/******/ 	});
+/************************************************************************/
+/******/ 	
+/******/ 	// startup
+/******/ 	// Load entry module and return exports
+/******/ 	// This entry module can't be inlined because the eval devtool is used.
+/******/ 	var __webpack_exports__ = {};
+/******/ 	__webpack_modules__["./src/timeline.js"]();
+/******/ 	
+/******/ })()
+;

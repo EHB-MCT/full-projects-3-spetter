@@ -30,9 +30,6 @@ const Grid = require('gridfs-stream');
 // path
 const path = require('path');
 
-// crypto
-const crypto = require('crypto');
-
 // Middleware
 const bodyParser = require('body-parser');
 const cors = require('cors');
@@ -42,32 +39,48 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(cors());
 
-// mongo query-string
-const MongoQS = require('mongo-querystring');
-
 // gfs stream
 const gfs = Grid(db, mongo);
 gfs.collection('upload');
 
 // Create storage engine
-const storage = new GridFsStorage({
-  url,
-  file: (req, file) => new Promise((resolve, reject) => {
-    crypto.randomBytes(16, (err, buf) => {
-      if (err) {
-        return reject(err);
-      }
-      const filename = buf.toString('hex') + path.extname(file.originalname);
-      const fileInfo = {
-        filename,
-        bucketname: 'uploads',
-      };
-      resolve(fileInfo);
-    });
-  }),
+// const storage = new GridFsStorage({
+//   url,
+//   file: (req, file) => new Promise((resolve, reject) => {
+//     crypto.randomBytes(16, (err, buf) => {
+//       if (err) {
+//         return reject(err);
+//       }
+//       const filename = buf.toString('hex') + path.extname(file.originalname);
+//       const fileInfo = {
+//         filename,
+//         bucketname: 'uploads',
+//       };
+//       resolve(fileInfo);
+//     });
+//   }),
+// });
+
+// const upload = multer({ storage });
+
+//Commented out multer using the GridFsStorage
+const storage = multer.diskStorage({
+  destination: function (req, file, callback) {
+      callback(null, './docs/uploads');
+  },
+  filename: function (req, file, callback) {
+      callback(null, file.originalname);
+  }
 });
 
-const upload = multer({ storage });
+const upload = multer({storage: storage});
+
+// @ GET /
+//@desc Loads form
+
+//@route POST /upload
+//@desc Uploads file to DB
+app.post('')
 
 storyRouter.route('/stories-content')
   .get((req, res) => {
@@ -98,17 +111,15 @@ storyRouter.route('/stories-content/:id')
       res.json(result);
     });
   });
-storyRouter.route('/stories-content/:category')
-  .get((req, res) => {
-    collection = db.collection('stories-content');
-    collection.find({ category: req.params.category }).toArray((error, result) => {
-      if (error) {
-        return res.status(500).send(error);
-      }
-      res.json(result);
-    });
-  });
+
 app.use('/api', storyRouter);
+
+postRouter.route('/stories-audio-upload')
+  .post(upload.single('audio'), async (req, res) => {
+    res.json({
+      audioUrl: req.file.filename
+    });
+});
 
 postRouter.route('/stories-userpost')
   .post((req, res) => {

@@ -2,7 +2,13 @@ const { chunk } = require('lodash');
 
 console.log('connected!');
 
+// uuid
+import { v4 as uuidv4 } from 'uuid';
+
 window.onload = () => {
+  // Globals
+  let uploadBlob;
+
 /**
  * Helper function for POSTing data as JSON with fetch.
  *
@@ -27,10 +33,10 @@ window.onload = () => {
     const response = await fetch(url, fetchOptions);
 
     console.log(response);
-    if (!response.ok) {
-      const errorMessage = await response.text();
-      throw new Error(errorMessage);
-    } else {
+        if (!response.ok) {
+          const errorMessage = await response.text();
+          throw new Error(errorMessage);
+        } else {
       return true;
     }
   }
@@ -59,6 +65,29 @@ window.onload = () => {
     console.log('handleFormSubmit');
     try {
       const formData = new FormData(form);
+      console.log(formData);
+
+      //TODO: add some checks if audio is not empty etc.; put in separate function
+      //add audio
+      if(uploadBlob) {
+        const audioFormData = new FormData();
+        // const newDate = new Date().toDateString();
+
+        const uniqueName = uuidv4();
+
+        audioFormData.append('audio', uploadBlob, `${uniqueName}.ogg`);
+    
+        const audioResp = await fetch('http://localhost:4000/api/stories-audio-upload', {
+          method: 'POST',
+          body: audioFormData
+        });
+        const audioBody = await audioResp.json();
+        console.log("Audio url", audioBody)
+
+        formData.append('audioUrl', audioBody.audioUrl);
+      }
+
+
       const responseData = await postFormDataAsJson({ url, formData });
       document.getElementById('userform').reset();
       setTimeout(() => {
@@ -93,6 +122,8 @@ window.onload = () => {
           startStop.addEventListener('click', stop);
           startStop.value = 'stop';
 
+          uploadBlob = null;
+
           mediaRecorder.start();
           console.log(mediaRecorder.state);
           console.log('recorder started');
@@ -121,6 +152,7 @@ window.onload = () => {
           soundClips.src = audioUrl;
 
           // prepare audioURL for transfer to mongodb/audiomap
+          uploadBlob = blob;
         };
 	   })
 	   // Error callback
