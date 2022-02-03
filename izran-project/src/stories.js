@@ -5,15 +5,16 @@ const { forEach } = require("lodash");
 console.log('connected!');
 
 let filter;
+let filterType;
+
 console.log(filter);
 window.onload = () => {
 
-  
 
   async function runTest(){
     if (filter != null || filter != undefined) {
       console.log(filter);
-      const resp = await fetch(`http://localhost:4000/api/stories-content?category=${filter}`);
+      const resp = await fetch(`http://localhost:4000/api/stories-content?${filterType}=${filter}`);
       const data = await resp.json();
       postItems(data);
       document.getElementById('tags').innerHTML = `<div class="tag1">${filter}</div>`;
@@ -45,13 +46,13 @@ window.onload = () => {
               </h2>
               <p class="text-base text-body-color leading-relaxed mb-7"></p>
               <div class="flex justify-between mb-4">
-                <div id="themas" class="flex-initial py-1 px-8 bg-white text-3xl w-72 h-16 rounded-3xl text-center">
+                <div id="year" class="filtertag flex-initial py-1 px-8 bg-white text-3xl w-72 h-16 rounded-3xl text-center" data-id="${element.year}">
                   ${element.year}
                 </div>
-                <div id="themas" class="category flex-initial py-1 px-8 bg-white text-3xl w-72 h-16 rounded-3xl text-center" data-id="${element.category}">
+                <div id="category" class="filtertag flex-initial py-1 px-8 bg-white text-3xl w-72 h-16 rounded-3xl text-center" data-id="${element.category}">
                   ${element.category}
                 </div>
-                <div id="themas" class="flex-initial inline-block py-1 px-8 bg-white text-3xl w-72 h-16 rounded-3xl text-center">
+                <div id="location" class="filtertag flex-initial inline-block py-1 px-8 bg-white text-3xl w-72 h-16 rounded-3xl text-center" data-id="${element.location}">
                   ${element.location}
                 </div>
               </div>  
@@ -77,11 +78,13 @@ window.onload = () => {
 
    document.querySelectorAll('.button').forEach(item => { 
       item.addEventListener('click', e => {  
-        if(e.target.classList.contains('category')) {
+        if(e.target.classList.contains('filtertag')) {
           //console.log(e.target);
           //console.log(closestElement.getAttribute("data-id"));
           filter = e.target.getAttribute("data-id");
-          console.log(filter);
+          filterType = e.target.id;
+
+          console.log(filter, filterType);
 
           redirect();
 

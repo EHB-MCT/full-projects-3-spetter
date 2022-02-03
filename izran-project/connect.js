@@ -84,6 +84,10 @@ storyRouter.route('/stories-content')
     const query = {};
     if (req.query.category) {
       query.category = req.query.category;
+    } else if (req.query.location) {
+      query.location = req.query.location;
+    } else if (req.query.year) {
+      query.year = req.query.year;
     }
     collection = db.collection("stories-content");
     cursor = collection.find(query).toArray((error, result) => {

@@ -8,12 +8,9 @@ h1{
     font-size: 4.7rem;   
 }
 
-#themas{
+#year, #location, #category{
     font-family: "neue_machinaultrabold";   
     padding-top: 1rem;
-}
-
-#themas{
     width: 30%;
     color: #270F0C;
 }
