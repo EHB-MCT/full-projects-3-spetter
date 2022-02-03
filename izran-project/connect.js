@@ -1,4 +1,4 @@
-let db, collection;
+let collection;
 
 // Express
 const { Router } = require('express');
@@ -13,18 +13,67 @@ const { MongoClient, ObjectId } = require('mongodb');
 const url = 'mongodb+srv://izran-admin:G009leG0dG090l@cluster0.bih5e.mongodb.net/izran-database?retryWrites=true&w=majority';
 const dbName = 'izran-database';
 const client = new MongoClient(url);
+let db = client.db(dbName);
 
 //Mongojs
 const mongojs = require('mongojs');
 
+//multer
+const multer = require('multer');
+const {GridFsStorage} = require('multer-gridfs-storage');
+
+//grid
+var Grid = require('gridfs-stream');
+
+//path
+const path = require('path');
+
+//crypto
+const crypto = require('crypto');
 
 // Middleware
 const bodyParser = require('body-parser');
 const cors = require('cors');
+const { mongo } = require('mongoose');
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 app.use(cors());
+
+//gfs stream
+let gfs = Grid(db, mongo);
+gfs.collection('upload');
+
+
+//Create storage engine
+const storage = new GridFsStorage({
+  url: url,
+  file: (req, file) => {
+    return new Promise((resolve, reject) => {
+      crypto.randomBytes(16, (err, buf) => {
+        if(err) {
+          return reject(err);
+        }
+        const filename = buf.toString('hex') + path.extname(file.originalname);
+        const fileInfo = {
+          filename: filename,
+          bucketname: 'uploads'
+        };
+        resolve(fileInfo);
+      })
+    })
+  }
+});
+
+const upload = multer({storage});
+
+// @ GET /
+//@desc Loads form
+
+//@route POST /upload
+//@desc Uploads file to DB
+app.post('')
+
 
 
 storyRouter.route('/stories-content')
@@ -96,7 +145,6 @@ app.listen(port, () => {
     if(err) {
       throw err;
     }
-    db = client.db(dbName);
     console.log(`Connected to database: ${dbName}`)
   })
 });
