@@ -133,12 +133,12 @@ window.onload = () => {
           startStop.removeEventListener('click', stop);
           startStop.addEventListener('click', start);
           startStop.value = 'start';
-          // startStop.style.fill = 'FireBrick';
+          startStop.style.fill = 'FireBrick';
 
           mediaRecorder.stop();
           console.log(mediaRecorder.state);
           console.log('recorder stopped');
-          // startStop.style.fill = 'Black';
+          startStop.style.fill = 'Black';
 		   }
 
         mediaRecorder.ondataavailable = function (e) {
