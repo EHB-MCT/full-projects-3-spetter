@@ -9,11 +9,13 @@ window.onload = () => {
   
 
   async function runTest(){
-    if (localStorage.getItem('categoryFilter') !== null) {
-      const filter = localStorage.getItem('categoryFilter')
-      const resp = await fetch(`http://localhost:4000/api/stories-content/${filter}`);
+    if (sessionStorage.getItem('categoryFilter') !== null) {
+      const filter = sessionStorage.getItem('categoryFilter')
+      const resp = await fetch(`http://localhost:4000/api/stories-content?category=${filter}`);
       const data = await resp.json();
       postItems(data);
+      document.getElementById('tags').insertAdjacentHTML('beforeend', `<div class="tag1">${filter}</div>`);
+      
     } else {
       const resp = await fetch('http://localhost:4000/api/stories-content');
       const data = await resp.json();
@@ -57,7 +59,12 @@ window.onload = () => {
     
       });
     }
+
+   
   }
+
+  
+
 
   async function redirect(){
    await runTest();
@@ -72,9 +79,10 @@ window.onload = () => {
           //console.log(closestElement.getAttribute("data-id"));
           let filter = e.target.getAttribute("data-id");
           console.log(filter);
-          
+
           sessionStorage.setItem("categoryFilter", filter);
           document.location.href = 'stories.html';
+
         } else {
           //console.log(e.target);
           let closestElement = e.target.closest(".button");

@@ -40,6 +40,9 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 app.use(cors());
 
+//mongo query-string
+var MongoQS = require('mongo-querystring');
+
 //gfs stream
 let gfs = Grid(db, mongo);
 gfs.collection('upload');
@@ -72,18 +75,23 @@ const upload = multer({storage});
 
 //@route POST /upload
 //@desc Uploads file to DB
-app.post('')
 
 
 
 storyRouter.route('/stories-content')
   .get((req, res) => {
+
+    const query = {};
+    if (req.query.category) {
+      query.category = req.query.category;
+    }
     collection = db.collection("stories-content");
-    const cursor = collection.find({}).toArray((error, result) => {
+    cursor = collection.find(query).toArray((error, result) => {
       if(error){
         return res.status(500).send(error)
       }
       res.json(result);
+      
     }) 
   });
 
@@ -101,7 +109,7 @@ storyRouter.route('/stories-content')
   storyRouter.route('/stories-content/:category')
   .get((req, res) => {
     collection = db.collection("stories-content");
-    collection.find({_id: req.params.id}).toArray((error, result) => {
+    collection.find({category: req.params.category}).toArray((error, result) => {
       if(error){
         return res.status(500).send(error)
       }
