@@ -4,17 +4,19 @@ const { forEach } = require("lodash");
 
 console.log('connected!');
 
+let filter;
+console.log(filter);
 window.onload = () => {
 
   
 
   async function runTest(){
-    if (sessionStorage.getItem('categoryFilter') !== null) {
-      const filter = sessionStorage.getItem('categoryFilter')
+    if (filter != null || filter != undefined) {
+      console.log(filter);
       const resp = await fetch(`http://localhost:4000/api/stories-content?category=${filter}`);
       const data = await resp.json();
       postItems(data);
-      document.getElementById('tags').insertAdjacentHTML('beforeend', `<div class="tag1">${filter}</div>`);
+      document.getElementById('tags').innerHTML = `<div class="tag1">${filter}</div>`;
       
     } else {
       const resp = await fetch('http://localhost:4000/api/stories-content');
@@ -24,6 +26,7 @@ window.onload = () => {
     
    
     function postItems(data){
+      document.getElementById('content').innerHTML = " ";
       data.forEach(element => {
         //console.log(element.name);
         document.getElementById('content').insertAdjacentHTML('beforeend', `
@@ -75,13 +78,15 @@ window.onload = () => {
    document.querySelectorAll('.button').forEach(item => { 
       item.addEventListener('click', e => {  
         if(e.target.classList.contains('category')) {
-          console.log(e.target);
+          //console.log(e.target);
           //console.log(closestElement.getAttribute("data-id"));
-          let filter = e.target.getAttribute("data-id");
+          filter = e.target.getAttribute("data-id");
           console.log(filter);
 
-          sessionStorage.setItem("categoryFilter", filter);
-          document.location.href = 'stories.html';
+          redirect();
+
+          //sessionStorage.setItem("categoryFilter", filter);
+          //document.location.href = 'stories.html';
 
         } else {
           //console.log(e.target);
@@ -89,11 +94,23 @@ window.onload = () => {
           //console.log(closestElement.getAttribute("data-id"));
           let storyId = closestElement.getAttribute("data-id");
           console.log(storyId);
-          
           sessionStorage.setItem("storyId", storyId);
           document.location.href = 'story.html';
         }
+
+  
    }) })
+
+
+   document.querySelectorAll('.tag1').forEach(item => {
+     item.addEventListener('click', () => {
+        filter = null;
+        item.remove();
+        redirect();
+
+     })
+
+   })
    
      
 
