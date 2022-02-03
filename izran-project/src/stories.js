@@ -1,6 +1,4 @@
-"use strict"
-
-const { forEach } = require("lodash");
+const { forEach } = require('lodash');
 
 console.log('connected!');
 
@@ -9,27 +7,23 @@ let filterType;
 
 console.log(filter);
 window.onload = () => {
-
-
-  async function runTest(){
+  async function runTest() {
     if (filter != null || filter != undefined) {
       console.log(filter);
       const resp = await fetch(`http://localhost:4000/api/stories-content?${filterType}=${filter}`);
       const data = await resp.json();
       postItems(data);
       document.getElementById('tags').innerHTML = `<div class="tag1">${filter}</div>`;
-      
     } else {
       const resp = await fetch('http://localhost:4000/api/stories-content');
       const data = await resp.json();
       postItems(data);
     }
-    
-   
-    function postItems(data){
-      document.getElementById('content').innerHTML = " ";
-      data.forEach(element => {
-        //console.log(element.name);
+
+    function postItems(data) {
+      document.getElementById('content').innerHTML = ' ';
+      data.forEach((element) => {
+        // console.log(element.name);
         document.getElementById('content').insertAdjacentHTML('beforeend', `
         <div class="grid justify-items-center button" id="story1" action="http://localhost:4000/api/stories-content" data-id="${element._id}">
           <div class="w-11/12 m-auto rounded-3xl overflow-hidden mb-10 bg-red-600">
@@ -59,91 +53,39 @@ window.onload = () => {
             </div>
           </div>
         </div>
-            `) 
-    
+            `);
       });
     }
-
-   
   }
 
-  
+  async function redirect() {
+    await runTest();
 
-
-  async function redirect(){
-   await runTest();
-
-   //console.log('werkt');
-
-
-   document.querySelectorAll('.button').forEach(item => { 
-      item.addEventListener('click', e => {  
-        if(e.target.classList.contains('filtertag')) {
-          //console.log(e.target);
-          //console.log(closestElement.getAttribute("data-id"));
-          filter = e.target.getAttribute("data-id");
+    document.querySelectorAll('.button').forEach((item) => {
+      item.addEventListener('click', (e) => {
+        if (e.target.classList.contains('filtertag')) {
+          filter = e.target.getAttribute('data-id');
           filterType = e.target.id;
-
           console.log(filter, filterType);
-
           redirect();
-
-          //sessionStorage.setItem("categoryFilter", filter);
-          //document.location.href = 'stories.html';
-
         } else {
-          //console.log(e.target);
-          let closestElement = e.target.closest(".button");
-          //console.log(closestElement.getAttribute("data-id"));
-          let storyId = closestElement.getAttribute("data-id");
+          const closestElement = e.target.closest('.button');
+          const storyId = closestElement.getAttribute('data-id');
           console.log(storyId);
-          sessionStorage.setItem("storyId", storyId);
+          sessionStorage.setItem('storyId', storyId);
           document.location.href = 'story.html';
         }
+      });
+    });
 
-  
-   }) })
-
-
-   document.querySelectorAll('.tag1').forEach(item => {
-     item.addEventListener('click', () => {
+    document.querySelectorAll('.tag1').forEach((item) => {
+      item.addEventListener('click', () => {
         filter = null;
         item.remove();
         redirect();
-
-     })
-
-   })
-   
-     
-
-}
-  
-  redirect();
-
-  
-
+      });
+    });
   }
 
-  
-
-  
-  
-
-  
-
-  
- 
-
-  
-
- 
-
-  
-  
-
-
-
-
-
-
+  redirect();
+};

@@ -3,6 +3,7 @@ let collection;
 // Express
 const { Router } = require('express');
 const express = require('express');
+
 const app = express();
 const storyRouter = Router();
 const postRouter = Router();
@@ -10,25 +11,26 @@ const port = process.env.PORT || 3000;
 
 // MongoDb
 const { MongoClient, ObjectId } = require('mongodb');
+
 const url = 'mongodb+srv://izran-admin:G009leG0dG090l@cluster0.bih5e.mongodb.net/izran-database?retryWrites=true&w=majority';
 const dbName = 'izran-database';
 const client = new MongoClient(url);
-let db = client.db(dbName);
+const db = client.db(dbName);
 
-//Mongojs
+// Mongojs
 const mongojs = require('mongojs');
 
-//multer
+// multer
 const multer = require('multer');
-const {GridFsStorage} = require('multer-gridfs-storage');
+const { GridFsStorage } = require('multer-gridfs-storage');
 
-//grid
-var Grid = require('gridfs-stream');
+// grid
+const Grid = require('gridfs-stream');
 
-//path
+// path
 const path = require('path');
 
-//crypto
+// crypto
 const crypto = require('crypto');
 
 // Middleware
@@ -36,51 +38,39 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const { mongo } = require('mongoose');
 
-app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(cors());
 
-//mongo query-string
-var MongoQS = require('mongo-querystring');
+// mongo query-string
+const MongoQS = require('mongo-querystring');
 
-//gfs stream
-let gfs = Grid(db, mongo);
+// gfs stream
+const gfs = Grid(db, mongo);
 gfs.collection('upload');
 
-
-//Create storage engine
+// Create storage engine
 const storage = new GridFsStorage({
-  url: url,
-  file: (req, file) => {
-    return new Promise((resolve, reject) => {
-      crypto.randomBytes(16, (err, buf) => {
-        if(err) {
-          return reject(err);
-        }
-        const filename = buf.toString('hex') + path.extname(file.originalname);
-        const fileInfo = {
-          filename: filename,
-          bucketname: 'uploads'
-        };
-        resolve(fileInfo);
-      })
-    })
-  }
+  url,
+  file: (req, file) => new Promise((resolve, reject) => {
+    crypto.randomBytes(16, (err, buf) => {
+      if (err) {
+        return reject(err);
+      }
+      const filename = buf.toString('hex') + path.extname(file.originalname);
+      const fileInfo = {
+        filename,
+        bucketname: 'uploads',
+      };
+      resolve(fileInfo);
+    });
+  }),
 });
 
-const upload = multer({storage});
-
-// @ GET /
-//@desc Loads form
-
-//@route POST /upload
-//@desc Uploads file to DB
-
-
+const upload = multer({ storage });
 
 storyRouter.route('/stories-content')
   .get((req, res) => {
-
     const query = {};
     if (req.query.category) {
       query.category = req.query.category;
@@ -89,55 +79,42 @@ storyRouter.route('/stories-content')
     } else if (req.query.year) {
       query.year = req.query.year;
     }
-    collection = db.collection("stories-content");
+    collection = db.collection('stories-content');
     cursor = collection.find(query).toArray((error, result) => {
-      if(error){
-        return res.status(500).send(error)
+      if (error) {
+        return res.status(500).send(error);
       }
       res.json(result);
-      
-    }) 
+    });
   });
 
-  storyRouter.route('/stories-content/:id')
+storyRouter.route('/stories-content/:id')
   .get((req, res) => {
-    collection = db.collection("stories-content");
-    collection.find({_id:mongojs.ObjectID(req.params.id)}).toArray((error, result) => {
-      if(error){
-        return res.status(500).send(error)
+    collection = db.collection('stories-content');
+    collection.find({ _id: mongojs.ObjectID(req.params.id) }).toArray((error, result) => {
+      if (error) {
+        return res.status(500).send(error);
       }
       res.json(result);
-      //res.redirect("https:");
-    })
+    });
   });
-  storyRouter.route('/stories-content/:category')
+storyRouter.route('/stories-content/:category')
   .get((req, res) => {
-    collection = db.collection("stories-content");
-    collection.find({category: req.params.category}).toArray((error, result) => {
-      if(error){
-        return res.status(500).send(error)
+    collection = db.collection('stories-content');
+    collection.find({ category: req.params.category }).toArray((error, result) => {
+      if (error) {
+        return res.status(500).send(error);
       }
       res.json(result);
-      //res.redirect("https:");
-    })
+    });
   });
-
-
-
-
-
-
-
-  
-
 app.use('/api', storyRouter);
 
 postRouter.route('/stories-userpost')
   .post((req, res) => {
-    collection = db.collection("stories-content");
-    
+    collection = db.collection('stories-content');
     delete req.body._id;
-    collection.insertOne(req.body).then(result => {
+    collection.insertOne(req.body).then((result) => {
       console.log(result);
     });
     res.json(req.body);
@@ -149,14 +126,12 @@ app.get('/', (req, res) => {
   res.send('Welcome to my Nodemon API!');
 });
 
-
-
 app.listen(port, () => {
   console.log(`Logging on port: ${port}`);
-  client.connect(err => {
-    if(err) {
+  client.connect((err) => {
+    if (err) {
       throw err;
     }
-    console.log(`Connected to database: ${dbName}`)
-  })
+    console.log(`Connected to database: ${dbName}`);
+  });
 });
