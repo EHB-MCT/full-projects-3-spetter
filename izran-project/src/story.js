@@ -1,5 +1,6 @@
 const { forEach } = require('lodash');
 
+
 console.log('connected');
 
 window.onload = () => {
@@ -162,17 +163,17 @@ function insertAudioElement(){
 
 async function customPlayer(data, i = 0){
     await insertAudioElement()
+
+    
+
     const audioPlayer = document.querySelector(".audio-player");
     const audio = new Audio(`./uploads/${data[i].audioUrl}`);
 
-console.dir(audio);
+//console.dir(audio);
 
-audio.addEventListener(
-  "loadeddata",
-  () => {
-    audioPlayer.querySelector(".time .length").textContent = getTimeCodeFromNum(
-      audio.duration
-    );
+// preload="metadata" -> not working (no <audio> tag)
+
+audio.addEventListener("loadeddata", () => {audioPlayer.querySelector(".time .length").textContent = getTimeCodeFromNum(audio.duration);
     audio.volume = .75;
   },
   false

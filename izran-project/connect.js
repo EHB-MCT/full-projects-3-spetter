@@ -1,5 +1,7 @@
 let collection;
 
+const { getAudioDurationInSeconds } = require('get-audio-duration');
+
 // Express
 const { Router } = require('express');
 const express = require('express');
