@@ -163,9 +163,7 @@ function insertAudioElement(){
 async function customPlayer(data, i = 0){
     await insertAudioElement()
     const audioPlayer = document.querySelector(".audio-player");
-    const audio = new Audio(
-  `./uploads/${data[i].audioUrl}`
-);
+    const audio = new Audio(`./uploads/${data[i].audioUrl}`);
 
 console.dir(audio);
 
