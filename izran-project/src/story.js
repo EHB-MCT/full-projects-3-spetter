@@ -166,7 +166,6 @@ async function customPlayer(data, i = 0){
     const audio = new Audio(
   `./uploads/${data[i].audioUrl}`
 );
-//credit for song: Adrian kreativaweb@gmail.com
 
 console.dir(audio);
 
