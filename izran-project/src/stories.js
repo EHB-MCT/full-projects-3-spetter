@@ -1,9 +1,9 @@
-const { forEach } = require('lodash');
+const { forEach, get } = require('lodash');
 
 console.log('connected!');
 
-let filter;
-let filterType;
+let filter = sessionStorage.getItem('filter');
+let filterType = sessionStorage.getItem('filterType');
 
 console.log(filter);
 window.onload = () => {
@@ -66,6 +66,8 @@ window.onload = () => {
         if (e.target.classList.contains('filtertag')) {
           filter = e.target.getAttribute('data-id');
           filterType = e.target.id;
+          sessionStorage.setItem('filterType', filterType)
+          sessionStorage.setItem('filter', filter)
           console.log(filter, filterType);
           redirect();
         } else {
@@ -82,10 +84,12 @@ window.onload = () => {
       item.addEventListener('click', () => {
         filter = null;
         item.remove();
+        sessionStorage.removeItem('filter');
+        sessionStorage.removeItem('filterType');
         redirect();
       });
     });
   }
-
+  
   redirect();
 };

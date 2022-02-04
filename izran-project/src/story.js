@@ -3,6 +3,10 @@ const { forEach } = require('lodash');
 console.log('connected');
 
 window.onload = () => {
+
+  let filter = sessionStorage.getItem('filter');
+  let filterType = sessionStorage.getItem('filterType');
+
   const storyId = sessionStorage.getItem('storyId');
   let eersteVerhaal;
   let index;
@@ -21,16 +25,27 @@ window.onload = () => {
         ${data[0].message}
         </p>
         </div>`);
-        customPlayer(data);
-  }
+        if (data[0].audioUrl) {
+          customPlayer(data, 0);
+        }
+      }
   
 
   scrollThrough();
 
   async function scrollThrough() {
     await runTest();
-    const resp = await fetch('http://localhost:4000/api/stories-content');
-    const data = await resp.json();
+    
+    let data;
+
+    if (filter != null || filter != undefined) {
+      console.log(filter);
+      const resp = await fetch(`http://localhost:4000/api/stories-content?${filterType}=${filter}`);
+      data = await resp.json();
+    } else {
+      const resp = await fetch('http://localhost:4000/api/stories-content');
+      data = await resp.json();
+    }
 
     data.forEach((element) => {
       if (element._id == storyId) {
@@ -53,33 +68,46 @@ window.onload = () => {
         nextIndex = 0;
       }
 
+      console.log(data[nextIndex].audioUrl);
       console.log(nextIndex);
 
       document.getElementById('content').innerHTML = `<div id="story">
         <h1>${data[nextIndex].titel}</h1>
         <img src="../../img/img1.png" alt="">
+        <div id="audioContainer"></div>
         <p>
         ${data[nextIndex].message}
         </p>
         </div>`;
+        if (data[nextIndex].audioUrl) {
+          customPlayer(data, nextIndex);
+        }
     });
+
 
     // previous story
     const backwardButton = document.getElementById('backward');
-    backwardButton.addEventListener('click', (e) => {
-      prevIndex++;
+    backwardButton.addEventListener('click', (e) => {      
+      prevIndex--;
 
-      if (prevIndex === data.length) {
-        prevIndex = 0;
+      if (prevIndex < 0) {
+        prevIndex = data.length - 1;
       }
+
+      console.log(data[prevIndex].audioUrl);
+      console.log(prevIndex);
 
       document.getElementById('content').innerHTML = `<div id="story">
         <h1>${data[prevIndex].titel}</h1>
         <img src="../../img/img1.png" alt="">
+        <div id="audioContainer"></div>
         <p>
         ${data[prevIndex].message}
         </p>
         </div>`;
+        if (data[prevIndex].audioUrl) {
+          customPlayer(data, prevIndex);
+        }
     });
   }
 };
@@ -109,7 +137,7 @@ function insertAudioElement(){
       <div class="divider">/</div>
       <div class="length"></div>
     </div>
-    <div class="name">Music Song</div>
+    <div class="name"></div>
 <!--     credit for icon to https://saeedalipoor.github.io/icono/ -->
     <div class="volume-container">
       <div class="volume-button">
@@ -132,11 +160,11 @@ function insertAudioElement(){
 }
 
 
-async function customPlayer(data){
+async function customPlayer(data, i = 0){
     await insertAudioElement()
     const audioPlayer = document.querySelector(".audio-player");
     const audio = new Audio(
-  `./uploads/${data[0].audioUrl}`
+  `./uploads/${data[i].audioUrl}`
 );
 
 console.dir(audio);
